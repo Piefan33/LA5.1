@@ -1,17 +1,36 @@
 package edu.wmich.cs1120.LA5.MPortis.JWarren;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class ContactInformationFormatter implements IContactInformationFormatter {
 
 	@Override
 	public void readContactInformation(String[] filePaths) {
-		// TODO Auto-generated method stub
-
+		for(int i=0; i<filePaths.length;i++) {
+			formatContactInformation(filePaths[i]);
+		
+		}
 	}
 
 	@Override
 	public void formatContactInformation(String fileName) {
-		// TODO Auto-generated method stub
-
+		File file= new File(fileName);
+		try {
+			Scanner sc=new Scanner(file);
+			formatName(sc.nextLine());
+			formatPhoneNumber(sc.nextLine());
+			formatEmail(sc.nextLine());
+		} catch (FileNotFoundException e) {
+			
+		} catch (EmailAddressFormatException e) {
+			System.out.print(e);
+		} catch (PhoneNumberFormatException e) {
+			// TODO Auto-generated catch block
+		} catch (NameFormatException e) {
+			// TODO Auto-generated catch block
+		}		
 	}
 
 	@Override
