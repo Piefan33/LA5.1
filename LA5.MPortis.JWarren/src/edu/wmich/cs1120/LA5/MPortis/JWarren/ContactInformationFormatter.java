@@ -33,7 +33,7 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 				e.printStackTrace();
 			}
 			
-			yeet
+			
 	}
 
 	@Override
