@@ -6,6 +6,10 @@ import java.util.Scanner;
 
 public class ContactInformationFormatter implements IContactInformationFormatter {
 
+	private String phoneNumber;
+	private String name;
+	private String email;
+	
 	@Override
 	public void readContactInformation(String[] filePaths) {
 		for(int i=0; i<filePaths.length;i++) {
@@ -17,20 +21,19 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 	@Override
 	public void formatContactInformation(String fileName) {
 		File file= new File(fileName);
-		try {
-			Scanner sc=new Scanner(file);
-			formatName(sc.nextLine());
-			formatPhoneNumber(sc.nextLine());
-			formatEmail(sc.nextLine());
-		} catch (FileNotFoundException e) {
+
+			try {
+				Scanner sc = new Scanner(file);
+				name=sc.nextLine();
+				phoneNumber=sc.nextLine();
+				email=sc.nextLine();
+				sc.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			
-		} catch (EmailAddressFormatException e) {
-			System.out.print(e);
-		} catch (PhoneNumberFormatException e) {
-			// TODO Auto-generated catch block
-		} catch (NameFormatException e) {
-			// TODO Auto-generated catch block
-		}		
+			yeet
 	}
 
 	@Override
@@ -41,7 +44,6 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 
 	@Override
 	public void formatPhoneNumber(String phoneNumber) throws PhoneNumberFormatException {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -49,6 +51,30 @@ public class ContactInformationFormatter implements IContactInformationFormatter
 	public void formatName(String name) throws NameFormatException {
 		// TODO Auto-generated method stub
 		
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 
 }
